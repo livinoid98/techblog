@@ -1,0 +1,1766 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Java1/">
+      
+      
+        <link rel="next" href="../Kubernetes1/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>SQL 최적화 쿼리 작성 방법 - TechBlog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#select" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="TechBlog" class="md-header__button md-logo" aria-label="TechBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TechBlog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQL 최적화 쿼리 작성 방법
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TechBlog" class="md-nav__button md-logo" aria-label="TechBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TechBlog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jamstack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Java/Spring
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Java/Spring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Swagger 설정
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    SQL 최적화 쿼리 작성 방법
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    SQL 최적화 쿼리 작성 방법
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      개요
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      실행 순서
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      옵티마이저 동작
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      옵티마이저 오판 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      주의사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      대책
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      요약
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Infra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Infra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kubernetes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RKE2 OS 설치가이드
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RKE2 Cluster 설치가이드
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RKE2 각 Tools 설치가이드
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      개요
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      실행 순서
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      옵티마이저 동작
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      옵티마이저 오판 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      주의사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      대책
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      요약
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="select">SELECT 쿼리 실행 순서</h1>
+<h2 id="_1">개요</h2>
+<p>PostgreSQL의 SQL 실행 순서와 옵티마이저의 동작 방식, 그리고 성능에 영향을 줄 수 있는 주요 요소에 대해 정리한다.</p>
+<h2 id="_2">실행 순서</h2>
+<ul>
+<li>SQL의 논리적 실행 순서는 아래와 같다.</li>
+<li>PostgreSQL은 이 순서를 기반으로 옵티마이저가 실행 계획을 구성한다.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>1. FROM  
+2. JOIN  
+3. WHERE  
+4. GROUP BY  
+5. HAVING  
+6. SELECT  
+7. ORDER BY  
+8. LIMIT
+</code></pre></div>
+<h2 id="_3">옵티마이저 동작</h2>
+<ul>
+<li>
+<p>PostgreSQL은 통계 기반 옵티마이저를 사용하여 최적의 실행 계획을 수립한다.</p>
+</li>
+<li>
+<p>통계 정보에 따라 JOIN 순서, 인덱스 사용 여부 등을 결정한다.</p>
+</li>
+<li>
+<p>통계가 부정확하거나 데이터 분포가 왜곡된 경우, JOIN 이후 WHERE 필터링이 발생할 수 있어 성능이 저하된다.</p>
+</li>
+</ul>
+<h2 id="_4">옵티마이저 오판 예시</h2>
+<p>PostgreSQL 옵티마이저는 통계 기반으로 실행 계획을 세우기 때문에,</p>
+<ul>
+<li>
+<p>통계가 부정확하거나</p>
+</li>
+<li>
+<p>통계는 맞지만 데이터 분포나 조건이 특이하거나</p>
+</li>
+<li>
+<p>인덱스가 없어 선택지가 제한되면
+비효율적인 실행 경로를 선택해서 실제로 "JOIN → WHERE" 순서로 처리할 수도 있다.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>SELECT *
+FROM orders o
+JOIN customers c ON o.customer_id = c.id
+WHERE o.status = &#39;CANCELLED&#39;;
+</code></pre></div>
+<p>옵티마이저가 'CANCELLED'가 자주 있는 값이라고 잘못 판단하거나, 통계를 오래 갱신하지 않아 status 컬럼 분포를 잘 모르면...</p>
+<p>옵티마이저:“어차피 거의 다 CANCELLED겠지? 그럼 JOIN 먼저 해도 괜찮겠군.”</p>
+<p>실제로는 WHERE 조건이 대부분의 데이터를 걸러낼 수 있음에도, JOIN을 먼저 수행하고 나서 필터링하는 비효율적인 경로가 선택될 수 있다.</p>
+<h2 id="_5">주의사항</h2>
+<ul>
+<li>
+<p>JOIN이 필요 없는 경우에는 명시적으로 수행하지 않도록 쿼리를 구성해야 한다.</p>
+</li>
+<li>
+<p>필터링 가능한 조건은 WHERE로 먼저 적용하는 것이 효율적이다.</p>
+</li>
+<li>
+<p>불필요한 JOIN은 전체 성능에 악영향을 준다.</p>
+</li>
+</ul>
+<h2 id="_6">대책</h2>
+<ul>
+<li>
+<p>ANALYZE를 통해 통계를 최신 상태로 유지한다.</p>
+</li>
+<li>
+<p>조건 컬럼에는 인덱스를 적극 활용한다.</p>
+</li>
+<li>
+<p>EXPLAIN ANALYZE를 사용해 실제 실행 계획을 확인한다.</p>
+</li>
+<li>
+<p>필요시 JOIN 순서를 유도하기 위해 서브쿼리나 CTE를 활용할 수 있다.</p>
+</li>
+</ul>
+<h2 id="_7">요약</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>실행 순서</td>
+<td>FROM → JOIN → WHERE</td>
+</tr>
+<tr>
+<td>주의점</td>
+<td>불필요한 JOIN은 하지 말 것</td>
+</tr>
+<tr>
+<td>위험요소</td>
+<td>통계 오류로 인해 비효율적 실행 가능</td>
+</tr>
+<tr>
+<td>해결방법</td>
+<td>통계 최신화, 조건 필터링 우선, 실행 계획 확인</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="where">WHERE절 최적화</h1>
+<h2 id="_8">개요</h2>
+<p>WHERE 절은 실행 순서상 FROM 이후에 실행되므로, 불필요한 데이터는 최대한 빨리 제거하는 것이 핵심이다.</p>
+<p>인덱스를 효율적으로 활용하기 위한 WHERE 절 작성 방식이 성능에 큰 영향을 미친다.</p>
+<h2 id="_9">인덱스를 타는 조건</h2>
+<ul>
+<li>
+<p>컬럼 = 값</p>
+</li>
+<li>
+<p>컬럼 BETWEEN 값1 AND 값2</p>
+</li>
+<li>
+<p>컬럼 IN (값1, 값2, ...)</p>
+</li>
+<li>
+<p>컬럼 &gt; 값, 컬럼 &lt; 값 등 범위 조건</p>
+</li>
+</ul>
+<h2 id="_10">인덱스를 타지 않는 조건 (주의)</h2>
+<table>
+<thead>
+<tr>
+<th>유형</th>
+<th>비효율적인 예시</th>
+<th>인덱스 활용 가능한 리팩토링 예시</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>컬럼에 함수 사용</td>
+<td>LOWER(name) = 'kim'</td>
+<td>name ILIKE 'kim' 또는 name = 'Kim' (대소문자 정확히 아는 경우)</td>
+<td>컬럼에 함수가 적용되면 인덱스를 사용할 수 없습니다.</td>
+</tr>
+<tr>
+<td>컬럼 연산</td>
+<td>created_at + INTERVAL '1 day' = NOW()</td>
+<td>created_at &gt;= NOW() - INTERVAL '1 day'</td>
+<td>컬럼이 연산에 포함되면 인덱스가 무시되므로, 컬럼 자체를 기준으로 조건을 작성합니다.</td>
+</tr>
+<tr>
+<td>데이터 타입 캐스팅</td>
+<td>created_at::DATE = '2024-01-01'</td>
+<td>created_at &gt;= '2024-01-01' AND created_at &lt; '2024-01-02'</td>
+<td>타입 캐스팅도 인덱스 사용을 방해하므로, 범위 조건으로 변경합니다.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_11">예제</h2>
+<div class="highlight"><pre><span></span><code>-- 인덱스 사용 안 됨
+SELECT * FROM users WHERE created_at::DATE = &#39;2024-01-01&#39;;
+
+-- 인덱스 사용됨
+SELECT * FROM users 
+WHERE created_at &gt;= &#39;2024-01-01&#39; AND created_at &lt; &#39;2024-01-02&#39;;
+</code></pre></div>
+<hr />
+<h1 id="join">JOIN 최적화</h1>
+<h2 id="_12">개요</h2>
+<ul>
+<li>
+<p>JOIN은 여러 테이블의 데이터를 조합할 수 있도록 해주는 중요한 기능이지만 잘못 사용하면 성능에 큰 영향을 미친다.</p>
+</li>
+<li>
+<p>PostgreSQL 기준으로 통계 기반 옵티마이저가 실행 계획을 결정한다.</p>
+</li>
+<li>
+<p>하지만 항상 최선의 선택을 하는 것은 아니다. 따라서 개발자는 JOIN의 동작 방식과 성능 특성을 이해하고 있어야 한다.</p>
+</li>
+</ul>
+<p>참고: SQL에서 JOIN은 INNER JOIN과 동일한 의미로 처리된다. 하지만 가독성과 명확성을 위해 INNER JOIN을 명시적으로 사용한다.</p>
+<h2 id="join_1">JOIN 종류와 성능 특성</h2>
+<table>
+<thead>
+<tr>
+<th>JOIN 종류</th>
+<th>설명</th>
+<th>성능 영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INNER JOIN</td>
+<td>조건에 일치하는 데이터만 조인</td>
+<td>일반적으로 가장 빠름</td>
+</tr>
+<tr>
+<td>LEFT OUTER JOIN</td>
+<td>왼쪽 테이블은 무조건 유지 + 오른쪽 조인</td>
+<td>불필요한 row까지 유지됨 → 성능 저하 가능</td>
+</tr>
+<tr>
+<td>RIGHT OUTER JOIN</td>
+<td>오른쪽 테이블 유지</td>
+<td>자주 사용되지 않음</td>
+</tr>
+<tr>
+<td>FULL OUTER JOIN</td>
+<td>양쪽 테이블 모두 유지</td>
+<td>가장 비용이 큼</td>
+</tr>
+<tr>
+<td>CROSS JOIN</td>
+<td>조건 없이 전체 조합</td>
+<td>카디널리티 폭발 위험 → 주의 필요</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_13">조인 순서에 따른 성능 전략</h2>
+<ul>
+<li>
+<p>여러 개의 JOIN이 사용될 경우, 그 순서에 따라 성능이 달라질 수 있다.</p>
+</li>
+<li>
+<p>PostgreSQL은 자동으로 최적의 순서를 찾으려 하지만 다음 원칙들을 고려하면 더 나은 성능을 유도할 수 있다</p>
+</li>
+<li>
+<p>데이터가 적은 테이블부터 조인하는 것이 유리하다.</p>
+</li>
+<li>
+<p>옵티마이저가 비효율적인 조인 순서를 선택하는 경우, 서브쿼리나 CTE로 명시적으로 순서를 유도할 수 있다.</p>
+</li>
+</ul>
+<p>예시: 3개 테이블 조인 시 순서에 따른 성능 차이
+<div class="highlight"><pre><span></span><code>-- 비효율적인 조인 순서
+SELECT *
+FROM huge_table_a a
+INNER JOIN medium_table_b b ON a.id = b.a_id
+INNER JOIN small_table_c c ON b.id = c.b_id;
+
+-- 효율적인 조인 순서 유도 (작은 테이블부터 시작)
+SELECT *
+FROM small_table_c c
+INNER JOIN medium_table_b b ON b.id = c.b_id
+INNER JOIN huge_table_a a ON a.id = b.a_id;
+</code></pre></div></p>
+<p>첫 번째 쿼리는 중간 결과가 커질 수 있는 구조이며, 두 번째 쿼리는 작은 테이블부터 조인하여 중간 결과 크기를 줄이므로 성능상 유리하다.</p>
+<h2 id="_14">정리</h2>
+<ul>
+<li>
+<p>JOIN의 성능은 조인 조건, 조인 순서, 데이터 크기, 통계 정확도에 따라 결정됨</p>
+</li>
+<li>
+<p>PostgreSQL 옵티마이저는 통계 기반이므로 항상 최적은 아님</p>
+</li>
+<li>
+<p>필요시 서브쿼리, CTE, 인덱스 등을 활용하여 실행 경로 유도 가능</p>
+</li>
+<li>
+<p>작은 테이블부터 조인, 조인 순서에 따른 중간 결과 크기 감소는 중요한 최적화 전략임</p>
+</li>
+</ul>
+<hr />
+<h1 id="sql">SQL 쿼리 안티패턴</h1>
+<h2 id="sql_1">SQL 쿼리 안티 패턴 모음</h2>
+<p>SQL을 작성할 때 자주 발생하는 쿼리 안티패턴들을 정리하고, 각각에 대해 왜 문제가 되는지, 어떻게 개선할 수 있는지 예제를 통해 설명합니다.</p>
+<h2 id="select_1">SELECT * 사용</h2>
+<ul>
+<li>
+<p>문제점: 불필요한 모든 컬럼을 조회하게 되어 성능 저하 발생</p>
+</li>
+<li>
+<p>개선: 필요한 컬럼만 명시적으로 지정</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-- Bad
+SELECT * FROM users;
+
+-- Good
+SELECT id, name, email FROM users;
+</code></pre></div>
+<h2 id="distinct">불필요한 DISTINCT 사용</h2>
+<ul>
+<li>
+<p>문제점: DISTINCT는 내부적으로 정렬(SORT) 또는 해시(HASH) 연산이 필요하여 대용량 데이터에서 성능을 크게 떨어뜨릴 수 있습니다.</p>
+</li>
+<li>
+<p>개선: 중복이 발생하는 이유를 먼저 분석</p>
+</li>
+<li>
+<p>DISTINCT 는 정말 필요한 경우에만 사용</p>
+</li>
+<li>
+<p>DISTINCT를 자주 사용한다면 쿼리 로직 재검토 및 데이터 모델 개선 필요</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-- Bad
+SELECT DISTINCT customer_id
+FROM orders
+WHERE order_date &gt; &#39;2023-01-01&#39;;
+
+-- Good
+-- 실제 중복이 없어야 한다면, GROUP BY로 의도 명확화
+SELECT customer_id
+FROM orders
+WHERE order_date &gt; &#39;2023-01-01&#39;
+GROUP BY customer_id;
+</code></pre></div>
+<h2 id="like">LIKE '%...%' 패턴 검색</h2>
+<ul>
+<li>
+<p>문제점: 앞에 와일드카드를 사용하는 경우 인덱스 사용 불가</p>
+</li>
+<li>
+<p>개선: 접두어 검색 또는 GIN, trigram 인덱스 사용</p>
+</li>
+<li>
+<p>gin 인덱스도 3글자부터 속도 빠름</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-- Bad
+SELECT * FROM articles WHERE title LIKE &#39;%postgresql%&#39;;
+
+-- Good
+-- 인덱스를 활용하려면 접두어 방식 또는 특수 인덱스
+SELECT * FROM articles WHERE title LIKE &#39;postgresql%&#39;;
+</code></pre></div>
+<h2 id="_15">컬럼에 함수 또는 연산 적용</h2>
+<ul>
+<li>
+<p>문제점: 인덱스를 사용할 수 없어 풀스캔 발생</p>
+</li>
+<li>
+<p>개선: 함수나 연산은 컬럼이 아닌 값에 적용</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-- Bad
+SELECT * FROM users WHERE LOWER(name) = &#39;kim&#39;;
+
+-- Good
+SELECT * FROM users WHERE name ILIKE &#39;kim&#39;;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>-- Bad
+SELECT * FROM logs WHERE created_at + INTERVAL &#39;1 day&#39; = NOW();
+
+-- Good
+SELECT * FROM logs WHERE created_at &gt;= NOW() - INTERVAL &#39;1 day&#39;;
+</code></pre></div>
+<h2 id="_16">암시적 타입 변환</h2>
+<ul>
+<li>
+<p>문제점: 정수와 문자열 비교 등에서 인덱스가 무시될 수 있음</p>
+</li>
+<li>
+<p>개선: 명시적으로 타입을 일치시킴</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-- Bad
+SELECT * FROM users WHERE id = &#39;123&#39;;
+
+-- Good
+SELECT * FROM users WHERE id = 123;
+</code></pre></div>
+<h2 id="join_2">JOIN 남용</h2>
+<ul>
+<li>
+<p>문제점: 필요 없는 테이블까지 조인해서 불필요한 연산 증가</p>
+</li>
+<li>
+<p>개선: JOIN 대상은 최소화하고, EXISTS 등으로 대체 고려</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-- Bad
+SELECT * FROM users u JOIN orders o ON u.id = o.user_id JOIN products p ON o.product_id = p.id;
+
+-- Good
+-- 필요 없는 JOIN 제거
+SELECT u.* FROM users u WHERE EXISTS (
+  SELECT 1 FROM orders o WHERE o.user_id = u.id
+);
+</code></pre></div>
+<hr />
+<h1 id="_17">파티션 테이블 사용 시 주의사항</h1>
+<h2 id="_18">파티션 테이블 사용 시 주의사항</h2>
+<p>PostgreSQL에서 파티션 테이블에 대한 쿼리 작성 시 반드시 파티션 키를 활용한 조건절을 포함해야 원하는 성능을 얻을 수 있다. 그렇지 않으면 성능 저하뿐 아니라 심각한 시스템 리소스 낭비 및 락 경합(lock contention) 문제로까지 이어질 수 있다.</p>
+<h2 id="_19">파티션 키를 활용한 쿼리 작성</h2>
+<p>파티션 테이블에서는 파티션 키를 WHERE 절에서 직접 명시해야 해당 파티션만 조회할 수 있다 (partition pruning).</p>
+<p>예시
+<div class="highlight"><pre><span></span><code>-- ❌ 파티션 pruning이 되지 않음 (함수 사용)
+SELECT * FROM logs WHERE DATE(created_at) = CURRENT_DATE;
+
+-- ✅ 파티션 pruning 가능 (범위 조건 사용)
+SELECT * FROM logs 
+WHERE created_at &gt;= CURRENT_DATE 
+  AND created_at &lt; CURRENT_DATE + INTERVAL &#39;1 day&#39;;
+</code></pre></div></p>
+<h2 id="_20">올바른 파티션 키 활용법 요약</h2>
+<table>
+<thead>
+<tr>
+<th>작성 방식</th>
+<th>예시</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>함수 사용 ❌</td>
+<td>DATE(created_at) = '2024-01-01'</td>
+<td>파티션 키 사용 실패 → pruning 실패</td>
+</tr>
+<tr>
+<td>연산 사용 ❌</td>
+<td>created_at + INTERVAL '1 day' = CURRENT_DATE</td>
+<td>pruning 실패</td>
+</tr>
+<tr>
+<td>타입 캐스팅 ❌</td>
+<td>created_at::DATE = '2024-01-01'</td>
+<td>pruning 실패</td>
+</tr>
+<tr>
+<td>범위 조건 ✅</td>
+<td>created_at &gt;= '2024-01-01' AND created_at &lt; '2024-01-02'</td>
+<td>pruning 성공</td>
+</tr>
+<tr>
+<td>OR 조건 ❌</td>
+<td>created_at = '2024-01-01' OR user_id = 1</td>
+<td>일부 조건만 파티션 키여도 pruning이 되지 않음</td>
+</tr>
+<tr>
+<td>서브쿼리 사용 ❌</td>
+<td>created_at IN (SELECT date FROM ref_dates)</td>
+<td>pruning 불확실</td>
+</tr>
+<tr>
+<td>CASE WHEN 사용 ❌</td>
+<td>CASE WHEN flag THEN created_at ELSE NULL END = '2024-01-01'</td>
+<td>pruning 어려움</td>
+</tr>
+<tr>
+<td>JOIN 조건만 사용 ❌</td>
+<td>JOIN ... ON logs.created_at = dim.date</td>
+<td>pruning 불가, WHERE절에 파티션 키 명시 필요</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_21">파티션 키를 타지 못했을 때 발생하는 문제점</h2>
+<table>
+<thead>
+<tr>
+<th>문제</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>모든 파티션 풀스캔</td>
+<td>조건이 파티션 키를 활용하지 못하면 PostgreSQL은 모든 파티션을 순차적으로 검사함</td>
+</tr>
+<tr>
+<td>실행 속도 저하</td>
+<td>수십~수백 개의 파티션을 다 뒤지기 때문에 쿼리 시간이 급격히 증가</td>
+</tr>
+<tr>
+<td>비효율적인 인덱스 사용</td>
+<td>인덱스가 있어도 파티션 pruning이 안되면 인덱스 탐색의 효과가 제한됨</td>
+</tr>
+<tr>
+<td>불필요한 I/O 증가</td>
+<td>관련 없는 파티션까지 디스크에서 읽으면서 I/O 부하 증가</td>
+</tr>
+<tr>
+<td>플래너의 잘못된 판단</td>
+<td>파티션 수가 많을수록 플래너가 잘못된 실행 계획을 선택할 가능성 증가</td>
+</tr>
+<tr>
+<td>메모리 사용 증가</td>
+<td>더 많은 데이터를 처리하려다 work_mem, temp buffer 사용량 증가</td>
+</tr>
+<tr>
+<td>락 경합(Lock Contention)</td>
+<td>단일 파티션만 조회하면 해당 파티션에만 락을 걸지만, pruning이 안 되면 모든 파티션에 락이 분산되어 걸리며 → 락 대기나 데드락 발생 가능성 증가</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_22">정리</h2>
+<ul>
+<li>
+<p>파티션 테이블을 사용할 땐 항상 파티션 키 조건을 명시적으로 작성해야 함</p>
+</li>
+<li>
+<p>함수, 연산, 타입 변환 등을 파티션 키에 사용하면 pruning이 불가능해짐</p>
+</li>
+<li>
+<p>pruning이 안 되면 성능 저하뿐만 아니라 락 이슈로까지 이어질 수 있음</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-- 추천 방식
+WHERE partition_key_column &gt;= &#39;2024-01-01&#39; AND partition_key_column &lt; &#39;2024-01-02&#39;
+</code></pre></div>
+<p>PostgreSQL에서 파티션 성능을 극대화하려면 단순히 파티션을 나누는 것만이 아니라 쿼리 설계 방식 자체가 중요하다.</p>
+<hr />
+<h1 id="_23">쿼리 계획 분석 가이드</h1>
+<h2 id="postgresql">PostgreSQL 쿼리 계획 분석 가이드</h2>
+<p>PostgreSQL 쿼리 계획을 이해하고 성능 최적화를 위한 기본적인 분석 방법에 대해 작성한다.</p>
+<h2 id="_24">쿼리 계획이란?</h2>
+<p>쿼리 계획(Query Plan)은 데이터베이스가 쿼리를 실행하기 위한 전략을 나타냅니다. 이 계획은 PostgreSQL이 쿼리를 어떻게 처리할 것인지에 대한 정보를 제공합니다. 실행 계획을 분석하면 쿼리 성능을 개선하는 데 중요한 힌트를 얻을 수 있습니다.</p>
+<p>쿼리 계획을 분석하려면 EXPLAIN 명령어를 사용하여 쿼리 실행 계획을 확인할 수 있습니다. </p>
+<p>예시:
+<div class="highlight"><pre><span></span><code>EXPLAIN SELECT * FROM employees WHERE salary &gt; 50000;
+</code></pre></div></p>
+<p>이 명령을 실행하면 PostgreSQL이 해당 쿼리를 어떻게 처리할 것인지에 대한 실행 계획을 출력합니다.</p>
+<h2 id="_25">쿼리 계획 항목 이해하기</h2>
+<h3 id="_26">주요항목</h3>
+<p>쿼리 계획을 분석할 때 중요한 항목들은 다음과 같습니다</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost (비용)</td>
+<td>쿼리 실행 계획에서 각 노드가 예상하는 비용입니다. 비용이 높은 부분은 성능 저하를 의미합니다. 비용이 높은 노드를 최적화해야 합니다.</td>
+</tr>
+<tr>
+<td>Actual Time (실제 실행 시간)</td>
+<td>각 노드에서 실제로 수행한 실행 시간입니다. 예상 시간과 실제 실행 시간이 차이 나는 부분은 성능 최적화의 힌트를 제공합니다.</td>
+</tr>
+<tr>
+<td>Scan Type (스캔 방식)</td>
+<td>데이터를 검색하는 방법입니다 (Seq Scan, Index Scan, Bitmap Index Scan 등). 잘못된 스캔 방식은 성능 저하의 주요 원인입니다.</td>
+</tr>
+<tr>
+<td>Rows (행 수)</td>
+<td>각 노드에서 예상되는 행 수입니다. 많은 행이 반환되는 노드는 성능에 큰 영향을 미칩니다.</td>
+</tr>
+<tr>
+<td>Join Type (조인 방식)</td>
+<td>두 테이블 간 결합 방식입니다 (Nested Loop, Hash Join, Merge Join). 잘못된 조인 방식은 성능을 크게 저하시킬 수 있습니다.</td>
+</tr>
+<tr>
+<td>Filter (필터 조건)</td>
+<td>필터 조건이 효율적으로 적용되고 있는지 확인합니다. 많은 행이 필터링되는 경우 성능이 떨어질 수 있습니다.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_27">주요 스캔 방식</h2>
+<p>PostgreSQL에서는 여러 가지 스캔 방식을 사용하여 데이터를 검색합니다. 각 방식의 특징과 성능을 이해하면 쿼리 성능을 최적화할 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>스캔 유형</th>
+<th>설명</th>
+<th>성능</th>
+<th>유리한 상황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index Only Scan (인덱스 전용 스캔)</td>
+<td>인덱스에서 필요한 데이터를 모두 가져오는 방식입니다.</td>
+<td>매우 빠름</td>
+<td>디스크 접근 없이 인덱스에서 직접 데이터를 가져오므로 성능이 매우 빠릅니다. 인덱스에 모든 컬럼이 포함되어야 합니다.</td>
+</tr>
+<tr>
+<td>Index Scan (인덱스 스캔)</td>
+<td>인덱스를 사용하여 데이터를 검색하는 방식입니다.</td>
+<td>빠름</td>
+<td>인덱스를 사용할 수 있으면 성능이 크게 향상됩니다. 인덱스가 없거나 잘못된 인덱스를 사용할 경우 성능 저하가 발생할 수 있습니다.</td>
+</tr>
+<tr>
+<td>Bitmap Index Scan (비트맵 인덱스 스캔)</td>
+<td>여러 인덱스를 결합하여 데이터를 검색하는 방식입니다.</td>
+<td>빠름</td>
+<td>여러 조건을 결합할 때 성능을 향상시킬 수 있습니다. 하지만 메모리 사용량이 많을 수 있고, 작은 데이터셋에서는 비효율적일 수 있습니다.</td>
+</tr>
+<tr>
+<td>Seq Scan (순차 스캔)</td>
+<td>테이블의 모든 행을 순차적으로 읽는 방식입니다.</td>
+<td>느림 (테이블 크기가 클수록 성능 저하)</td>
+<td>인덱스를 사용할 수 없거나, 전체 테이블을 읽어야 할 경우 사용됩니다. 데이터가 적을 때는 괜찮지만, 큰 테이블에서는 성능 저하가 심각할 수 있습니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_28">성능 최적화 팁</h3>
+<ol>
+<li>
+<p>인덱스 사용: Seq Scan을 피하고 Index Scan을 사용할 수 있도록 쿼리와 테이블을 최적화하세요. 특히 자주 조회되는 컬럼에는 인덱스를 생성하는 것이 중요합니다.</p>
+</li>
+<li>
+<p>인덱스 전용 스캔 활용: 가능한 경우, Index Only Scan을 활용하여 디스크 접근 없이 빠르게 데이터를 가져오세요.</p>
+</li>
+<li>
+<p>비트맵 인덱스 스캔: 여러 조건을 결합할 때 성능을 높일 수 있으니, 조건이 많은 쿼리에서 비트맵 인덱스를 고려해보세요.</p>
+</li>
+</ol>
+<h2 id="_29">주요 조인 방식</h2>
+<p>PostgreSQL에서 조인을 실행할 때 여러 가지 방식이 있습니다. 각 방식의 특징을 이해하면 쿼리 성능을 크게 향상시킬 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>조인 유형</th>
+<th>설명</th>
+<th>성능</th>
+<th>유리한 상황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nested Loop Join (중첩 루프 조인)</td>
+<td>두 테이블을 하나씩 순차적으로 탐색하며 결합하는 방식입니다.</td>
+<td>느림 (큰 테이블에서는 비효율적)</td>
+<td>작은 테이블 간의 조인이나, 작은 범위에서만 데이터를 찾는 경우.</td>
+</tr>
+<tr>
+<td>Hash Join (해시 조인)</td>
+<td>해시 테이블을 만들어 두 테이블을 결합하는 방식입니다.</td>
+<td>빠름 (대규모 데이터셋에서 유리)</td>
+<td>큰 테이블에서 조인할 때, 두 테이블이 모두 충분히 커야 효과적.</td>
+</tr>
+<tr>
+<td>Merge Join (병합 조인)</td>
+<td>두 테이블을 정렬된 상태에서 병합하는 방식입니다.</td>
+<td>빠름 (정렬된 테이블에 유리)</td>
+<td>두 테이블이 정렬되어 있을 때 매우 효율적입니다.</td>
+</tr>
+<tr>
+<td>Index Nested Loop Join (인덱스 중첩 루프 조인)</td>
+<td>중첩 루프 조인에 인덱스를 사용하는 방식입니다.</td>
+<td>빠름 (인덱스를 잘 활용하면 빠름)</td>
+<td>작은 테이블에서 큰 테이블을 조인할 때 효율적입니다. 인덱스를 잘 활용할 수 있는 경우에 유리합니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_30">성능 최적화 팁</h3>
+<ol>
+<li>
+<p>조인 방식 선택: 데이터셋 크기에 따라 적절한 조인 방식을 선택하세요. 큰 테이블 간의 조인에는 Hash Join이나 Merge Join이 더 효율적일 수 있습니다.</p>
+</li>
+<li>
+<p>인덱스 활용: Index Nested Loop Join을 활용하여 작은 테이블에서 큰 테이블을 조인할 때 성능을 크게 향상시킬 수 있습니다.</p>
+</li>
+<li>
+<p>조인 순서: 가능한 한 작은 테이블부터 조인하는 것이 좋습니다. 작은 테이블을 먼저 처리하면 성능을 최적화할 수 있습니다.</p>
+</li>
+</ol>
+<h2 id="_31">쿼리 계획 예시</h2>
+<p>예시 1: 기본 Seq Scan</p>
+<div class="highlight"><pre><span></span><code>EXPLAIN SELECT * FROM employees WHERE salary &gt; 50000;
+</code></pre></div>
+<p>쿼리 계획:</p>
+<div class="highlight"><pre><span></span><code>Seq Scan on employees  (cost=0.00..431.00 rows=1000 width=48)
+  Filter: salary &gt; 50000
+</code></pre></div>
+<p>이 경우 Seq Scan이 사용되고 있습니다. 테이블의 모든 행을 읽고 필터를 적용하는 방식이므로, 성능이 비효율적일 수 있습니다. salary 컬럼에 인덱스를 추가하면 성능이 향상될 수 있습니다.</p>
+<p>예시 2: Index Scan</p>
+<div class="highlight"><pre><span></span><code>EXPLAIN SELECT * FROM employees WHERE salary &gt; 50000 AND department_id = 10;
+</code></pre></div>
+<p>쿼리 계획:</p>
+<div class="highlight"><pre><span></span><code>Index Scan using employees_salary_idx on employees  (cost=0.29..12.12 rows=200 width=48)
+  Index Cond: (salary &gt; 50000)
+  Filter: (department_id = 10)
+</code></pre></div>
+<p>Index Scan이 사용되고 있습니다. 인덱스를 활용하여 salary 컬럼을 빠르게 검색하고 있습니다. 추가 조건(department_id = 10)에 대한 필터는 이후에 적용됩니다.</p>
+<h2 id="_32">결론</h2>
+<p>쿼리 계획을 분석하면 성능을 최적화하는 데 중요한 정보를 얻을 수 있습니다. 신입 개발자는 쿼리 계획에서 비용, 실제 실행 시간, 스캔 방식, 조인 방식 등을 집중적으로 확인하고, 성능이 비효율적인 부분을 최적화하는 것이 중요합니다. 이를 통해 데이터베이스의 성능을 향상시킬 수 있습니다.</p>
+<p>쿼리 성능을 최적화하려면:</p>
+<ul>
+<li>
+<p>적절한 인덱스 활용: 인덱스를 활용하여 Seq Scan을 피하세요.</p>
+</li>
+<li>
+<p>효율적인 조인 방식 선택: 데이터셋 크기에 맞는 조인 방식을 선택하세요.</p>
+</li>
+</ul>
+<hr />
+<h1 id="_33">인덱스 설계 가이드</h1>
+<h2 id="postgresql_1">PostgreSQL 인덱스 설계 가이드</h2>
+<p>인덱스는 쿼리 성능을 크게 향상시키지만, 잘못 설계하면 저장 공간 낭비와 유지비용 증가로 이어질 수 있다. PostgreSQL의 주요 인덱스 종류, 사용 사례, 제한사항, 멀티컬럼 인덱스 전략을 정리한다.</p>
+<h2 id="_34">인덱스 종류와 사용 사례</h2>
+<p>PostgreSQL에서 제공하는 주요 인덱스 종류와 각각의 특성, 사용 사례, 제한사항은 다음과 같다.</p>
+<table>
+<thead>
+<tr>
+<th>인덱스 종류</th>
+<th>설명</th>
+<th>사용 사례</th>
+<th>장점</th>
+<th>제한사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B-Tree</td>
+<td>균형 트리 구조, 기본 인덱스</td>
+<td>등치(=), 범위(&gt;, &lt;), IN, ORDER BY, LIKE 'prefix%'</td>
+<td>범용적, 대부분의 쿼리에 적합</td>
+<td>LIKE '%text%' 같은 비접두어 검색, 복잡한 데이터 구조(배열, JSONB)에 부적합</td>
+</tr>
+<tr>
+<td>GIN</td>
+<td>Generalized Inverted Index, 복합 데이터용</td>
+<td>JSONB, 배열 포함(@&gt;),全文 검색(tsvector, tsquery), trigram 검색</td>
+<td>복잡한 데이터 검색에 효율적</td>
+<td>2글자 이하 검색 시 성능 저하, 생성/유지 비용 높음, 업데이트 잦은 테이블에 부적합</td>
+</tr>
+<tr>
+<td>GiST</td>
+<td>Generalized Search Tree, 유연한 검색</td>
+<td>공간 데이터(PostGIS), 유사성 검색(LIKE, trigram), 범위 겹침</td>
+<td>복잡한 패턴/공간 검색 지원</td>
+<td>복잡한 쿼리에서 느릴 수 있음, B-Tree보다 인덱스 크기 큼</td>
+</tr>
+<tr>
+<td>BRIN</td>
+<td>Block Range Index, 순차 데이터용</td>
+<td>시계열 데이터, 순차 증가 ID</td>
+<td>저장 공간 적음, 대용량 테이블 효율적</td>
+<td>무작위 데이터, 잦은 업데이트 환경에 부적합</td>
+</tr>
+<tr>
+<td>Hash</td>
+<td>해시 기반, 등치 연산 전용</td>
+<td>정확한 등치 검색(=)</td>
+<td>빠른 등치 검색</td>
+<td>범위 검색 불가, PostgreSQL 10+에서 안정적, 업데이트 성능 저하 가능</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_35">멀티컬럼 인덱스 전략</h2>
+<p>멀티컬럼 인덱스는 여러 컬럼을 조합해 WHERE, JOIN, ORDER BY에서 사용되는 경우 효율적이다.</p>
+<h3 id="_36">설계 원칙</h3>
+<ul>
+<li>
+<p>컬럼 순서:</p>
+<ul>
+<li>
+<p>필터링 우선: 자주 사용되는 WHERE 조건 컬럼 먼저 배치 (예: WHERE col1 = X AND col2 &gt; Y → (col1, col2)).</p>
+</li>
+<li>
+<p>카디널리티 고려: 고유 값이 많은 컬럼(고카디널리티)을 앞에 배치.</p>
+</li>
+<li>
+<p>ORDER BY 고려: 정렬 컬럼은 마지막에 배치.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>제한사항:</p>
+<ul>
+<li>
+<p>너무 많은 컬럼 포함 시 유지비용 증가, 인덱스 크기 커짐.</p>
+</li>
+<li>
+<p>앞쪽 컬럼이 조건에 포함되지 않으면 인덱스 사용 불가.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>예시
+<div class="highlight"><pre><span></span><code>CREATE INDEX idx_orders_date_status ON orders (order_date, status);
+-- 유용: SELECT * FROM orders WHERE order_date = &#39;2024-01-01&#39; AND status = &#39;CANCELLED&#39;;
+-- 비효율적: SELECT * FROM orders WHERE status = &#39;CANCELLED&#39;; (order_date 조건 없음)
+</code></pre></div></p>
+<h3 id="_37">실전 팁</h3>
+<p>쿼리 분석: EXPLAIN으로 인덱스 사용 여부 확인.</p>
+<p>부분 인덱스: 특정 조건에만 적용되는 인덱스 생성.
+<div class="highlight"><pre><span></span><code>CREATE INDEX idx_orders_cancelled ON orders (order_date) WHERE status = &#39;CANCELLED&#39;;
+</code></pre></div></p>
+<p>커버링 인덱스: 쿼리에서 필요한 모든 컬럼을 포함해 디스크 접근 최소화.
+<div class="highlight"><pre><span></span><code>CREATE INDEX idx_users_covering ON users (id, name, email) INCLUDE (created_at);
+</code></pre></div></p>
+<h3 id="_38">인덱스 설계 주의사항</h3>
+<ul>
+<li>
+<p>과도한 인덱스: 인덱스는 쓰기 성능(INSERT, UPDATE, DELETE) 저하. 테이블당 5~10개 이하 권장.</p>
+</li>
+<li>
+<p>통계 유지: ANALYZE로 통계 최신화, 잘못된 통계는 비효율적 인덱스 선택 유발.</p>
+</li>
+<li>
+<p>유지비용: GIN, GiST는 생성/유지 비용 높음, 잦은 업데이트 테이블에 주의.</p>
+</li>
+<li>
+<p>쿼리 패턴 분석: pg_stat_statements로 실제 쿼리 패턴 파악 후 인덱스 설계.</p>
+</li>
+<li>
+<p>GIN 트라이그램 제한:</p>
+<ul>
+<li>
+<p>2글자 이하 검색은 인덱스 효율 낮음. 예: LIKE '%db%'는 GIN 인덱스 비효율적.</p>
+</li>
+<li>
+<p>3글자 이상(예: LIKE '%data%')에서 GIN 트라이그램 인덱스 효과적.</p>
+</li>
+<li>
+<p>설정: CREATE EXTENSION pg_trgm;, CREATE INDEX idx_trgm ON table USING GIN (column gin_trgm_ops);.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>GiST 트라이그램 제한:</p>
+<ul>
+<li>
+<p>GIN보다 유사성 검색(%)에서 느림.</p>
+</li>
+<li>
+<p>PostGIS 등 공간 데이터에 특화.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>테스트: EXPLAIN ANALYZE로 인덱스 효과 확인, 실제 데이터로 테스트 필수.</p>
+<h2 id="_39">요약</h2>
+<ul>
+<li>
+<p>B-Tree: 범용적, 등치/범위 검색에 최적.</p>
+</li>
+<li>
+<p>GIN: JSONB, 배열,全文 검색. 3글자 이상 검색에서 효율적, 2글자 이하 비효율.</p>
+</li>
+<li>
+<p>GiST: 공간 데이터, 유사성 검색. GIN보다 트라이그램 검색 느림.</p>
+</li>
+<li>
+<p>BRIN: 시계열/순차 데이터, 대용량 테이블에 적합.</p>
+</li>
+<li>
+<p>Hash: 등치 검색 전용, 제한적 사용.</p>
+</li>
+</ul>
+<p>멀티컬럼 인덱스: 필터링 순서, 카디널리티 고려, 커버링 인덱스 활용.</p>
+<p>주의: 인덱스 유지비용, 통계 갱신, 쿼리 패턴 분석 필수.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
