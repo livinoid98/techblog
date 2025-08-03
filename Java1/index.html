@@ -1,0 +1,1650 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../test/">
+      
+      
+        <link rel="next" href="../Postgresql1/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Swagger 설정 - TechBlog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="TechBlog" class="md-header__button md-logo" aria-label="TechBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TechBlog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Swagger 설정
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TechBlog" class="md-nav__button md-logo" aria-label="TechBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TechBlog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jamstack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Java/Spring
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Java/Spring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Swagger 설정
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Swagger 설정
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      개요
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applicationyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application.yml 기본
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swagger 의존성 추가
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swaggerconfigjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      SwaggerConfig.java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SwaggerConfig.java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#info-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Info Object
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Tag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameterhiddentrue-or-operationhidden-true-or-hidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Parameter(hidden=true) or @Operation(hidden = true) or @Hidden
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiresponses" class="md-nav__link">
+    <span class="md-ellipsis">
+      @ApiResponses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Parameter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Schema 주요 옵션
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      참고사항
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="참고사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 라이브러리 및 유지 관리 상태
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 라이브러리 및 유지 관리 상태">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-openapi-swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OpenAPI 및 Swagger 버전
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenAPI 및 Swagger 버전">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 의존성 및 설정 간소화
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 의존성 및 설정 간소화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Spring Boot 버전 호환성
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Spring Boot 버전 호환성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postgresql1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SQL 최적화 쿼리 작성 방법
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Infra
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Infra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kubernetes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RKE2 OS 설치가이드
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RKE2 Cluster 설치가이드
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RKE2 각 Tools 설치가이드
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      개요
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applicationyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application.yml 기본
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swagger 의존성 추가
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swaggerconfigjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      SwaggerConfig.java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SwaggerConfig.java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#info-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Info Object
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Tag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameterhiddentrue-or-operationhidden-true-or-hidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Parameter(hidden=true) or @Operation(hidden = true) or @Hidden
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apiresponses" class="md-nav__link">
+    <span class="md-ellipsis">
+      @ApiResponses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Parameter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      @Schema 주요 옵션
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      참고사항
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="참고사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 라이브러리 및 유지 관리 상태
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 라이브러리 및 유지 관리 상태">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-openapi-swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OpenAPI 및 Swagger 버전
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenAPI 및 Swagger 버전">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 의존성 및 설정 간소화
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 의존성 및 설정 간소화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Spring Boot 버전 호환성
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Spring Boot 버전 호환성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#springdoc-openapi_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      springdoc-openapi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#springfox_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      springfox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Swagger 설정</h1>
+
+<h2 id="_1">개요</h2>
+<ul>
+<li>
+<p>웹 서비스 명세를 문서화 해주는 오픈 소스 소프트웨어 프레임워크.</p>
+</li>
+<li>
+<p>API에 대한 명세(Spec)을 관리하고 REST API를 문서화하는 도구.</p>
+</li>
+<li>
+<p>API가 수정되면 문서는 자동으로 갱신된다.</p>
+</li>
+</ul>
+<h2 id="applicationyml">Application.yml 기본</h2>
+<div class="highlight"><pre><span></span><code># 기본 옵션
+springdoc:
+    version: ${project.version}
+    api-docs:
+        enabled: true # /v3/api-docs endpoint 
+    swagger-ui:
+        path: /swagger-ui # Swagger-UI의 경로를 /swagger-ui로 설정
+        path-to-match: /api/** # 매칭되는 경로의 api들을 문서에 표현.
+        disable-swagger-default-url: true # Swagger UI의 기본 설정으로 제공되는 Petstore 예제 URL을 비활성화하는 기능.
+        display-request-duration: true # 각 요청에 걸린 시간을 보여주는 기능.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># 추가 옵션
+springdoc:
+    paths-to-exclude: /api/mobile-protocol/set-rtu-data # 문서에 포함하지 않을 api
+    api-docs:
+        path: /v3/api-docs # JSON 형식의 OpenAPI 문서가 /v3/api-docs 경로에서 제공
+    swagger-ui:
+        enabled: false # 외부에 swagger-ui를 노출시키지 않을때 사용하는 옵션
+</code></pre></div>
+<h2 id="swagger">Swagger 의존성 추가</h2>
+<p>pom.xml 의존성 추가</p>
+<div class="highlight"><pre><span></span><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-ui&lt;/artifactId&gt;
+    &lt;version&gt;1.8.0&lt;/version&gt; 
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
+    &lt;version&gt;2.5.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div>
+<h2 id="swaggerconfigjava">SwaggerConfig.java</h2>
+<div class="highlight"><pre><span></span><code>/** 
+* Springdoc - Swagger 설정 클래스 
+*/
+@Configuration
+public class SwaggerConfig {
+    @Value(&quot;${project.name}&quot;)
+    private String projectName;
+
+    @Value(&quot;${springdoc.version}&quot;)
+    private String springdocVersion;
+
+    @Value(&quot;${project.patch-date}&quot;)
+    private LocalDateTime patchDate;
+
+    @Bean    
+    public OpenAPI openAPI() {
+        return new OpenAPI()
+                .components(new Components())
+                .info(apiInfo());
+    }
+
+    private Info apiInfo() {
+        return new Info()
+                .title(String.format(&quot;%s&quot;, projectName))
+                .version(String.format(&quot;%s&quot;, springdocVersion))
+                .description(&quot;patch date: &quot; + patchDate.format(DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;)))
+                .license(new License().name(&quot;Apache 2.0&quot;).url(&quot;http://springdoc.org&quot;));
+    }
+}
+</code></pre></div>
+<h3 id="info-object">Info Object</h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>프로젝트 타이틀</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>프로젝트 description</td>
+</tr>
+<tr>
+<td>termsOfService</td>
+<td>string</td>
+<td>API 약관</td>
+</tr>
+<tr>
+<td>contact</td>
+<td>Contact Object</td>
+<td>Contact information</td>
+</tr>
+<tr>
+<td>license</td>
+<td>License Object</td>
+<td>License information</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>version 정보</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tag">@Tag</h2>
+<p>API 그룹을 정의, 분류할 때 사용한다.</p>
+<ul>
+<li>
+<p>name : 태그의 이름</p>
+</li>
+<li>
+<p>description : 태그에 대한 설명</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>@Tag(name = &quot;protocol&quot;, description = &quot;Mobile 연동 관련 컨트롤러&quot;)
+public class ProtocolController {
+    private static final String AUTH_CHECK_PATH = &quot;auth-check&quot;;
+    ...
+}
+</code></pre></div>
+<p><img alt="tag" src="../images/java1/1.png" /></p>
+<h2 id="parameterhiddentrue-or-operationhidden-true-or-hidden">@Parameter(hidden=true) or @Operation(hidden = true) or @Hidden</h2>
+<p>문서에서 제공하지 않을 API 내용을 표현할 때 사용한다.</p>
+<div class="highlight"><pre><span></span><code>@Hidden
+@GetMapping(&quot;getMappingTest&quot;)
+public void test() {
+    protocolService.getMethodTest(&quot;test&quot;);
+}
+</code></pre></div>
+<h2 id="operation">@Operation</h2>
+<p>특정 Endpoint에 대한 메타데이터를 정의한다. Endpoint에 대한 설명, 요청 방식, 응답코드 등을 설정할 수 있다.</p>
+<ul>
+<li>
+<p>summary : 간단한 설명 설정</p>
+</li>
+<li>
+<p>description : 상세 설명 설정</p>
+</li>
+<li>
+<p>method : 요청 방식을 지정할 수 있다.</p>
+</li>
+<li>
+<p>tags : 그룹을 지정할 수 있다.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>@Operation(summary = &quot;특정 ID로 사용자 조회&quot;,
+        description = &quot;사용자의 ID를 Parameter로 받아서 사용자 정보를 제공한다.&quot;,
+        method = &quot;GET&quot;
+)
+@GetMapping(&quot;get-user-info&quot;)
+public void getUserInfo(@Parameter(description = &quot;사용자 ID&quot;, required = true) 
+                                @RequestParam String userId) {
+    protocolService.getUserInfo(userId);
+}
+</code></pre></div>
+<p><img alt="operation" src="../images/java1/2.png" /></p>
+<h2 id="apiresponses">@ApiResponses</h2>
+<p>API의 응답코드와 설명을 설정할 수 있다.</p>
+<div class="highlight"><pre><span></span><code>@ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, 
+                description = &quot;성공 또는 실패 응답&quot;,        
+                content = @Content(mediaType = &quot;application/json&quot;,
+                schema = @Schema(type = &quot;object&quot;),
+                examples = {
+                        @ExampleObject(name = &quot;성공&quot;, value = &quot;{\&quot;result\&quot;: 1}&quot;),
+                        @ExampleObject(name = &quot;실패&quot;, value = &quot;{\&quot;result\&quot;: 0, \&quot;errorMsg\&quot; : \&quot;error message\&quot;}&quot;)}))
+})
+@PostMapping(path = UPDATE_RTU_DATA, consumes = MediaType.APPLICATION_JSON_VALUE)
+public Map&lt;String, Object&gt; updateRtuData(@RequestBody final RtuModel rtuModel) {
+    return protocolService.updateRtuData(rtuModel);
+}
+</code></pre></div>
+<p><img alt="apiResponse" src="../images/java1/3.png" /></p>
+<h2 id="parameter">@Parameter</h2>
+<p>사용되는 파라미터에 대한 정보를 정의할 수 있다.</p>
+<div class="highlight"><pre><span></span><code>@GetMapping(&quot;get-user-info&quot;)
+public void getUserInfo(@Parameter(description = &quot;사용자 ID&quot;, required = true) 
+                                @RequestParam String userId) {
+    protocolService.getUserInfo(userId);
+}
+</code></pre></div>
+<p><img alt="parameter" src="../images/java1/4.png" /></p>
+<h2 id="schema">Schema</h2>
+<p>특정 모델 클래스나 필드에 대한 메타데이터를 정의한다. 모델의 속성 설명, 예제 등을 설정할 수 있다.</p>
+<div class="highlight"><pre><span></span><code>public class RtuModel {
+    @Id    
+    @JsonAlias({&quot;rtuID&quot;, &quot;rtu_id&quot;})
+    @Schema(title = &quot;RTU ID&quot;, description = &quot;단말 ID&quot;, type=&quot;String&quot;, requiredMode = Schema.RequiredMode.REQUIRED, example = &quot;R0001&quot;)
+    private String rtuId;
+
+    @Schema(title = &quot;RTU Type&quot;, description = &quot;Rtu Type&quot;, type=&quot;integer&quot;, example = &quot;0&quot;)
+    @JsonAlias({&quot;rtu_type&quot;, &quot;rtuType&quot;})
+    private short rtuType;
+
+    @Schema(title = &quot;Flag&quot;, description = &quot;정수형 flag 값&quot;, type=&quot;String&quot;, example = &quot;0&quot;)
+    @JsonAlias({&quot;flag&quot;})
+    private String flag; 
+
+    @Schema(title = &quot;Project Seq&quot;, description = &quot;프로젝트 seq 값&quot;, type=&quot;Integer&quot;, example = &quot;63&quot;)
+    @JsonAlias({&quot;project_seq&quot;, &quot;projectSeq&quot;})
+    private int projectSeq; // Project seq    
+
+    @Schema(title = &quot;Lon&quot;, description = &quot;Longitude 값&quot;, type=&quot;Double&quot;, example = &quot;37.6369&quot;)
+    @JsonAlias({&quot;recentLon&quot;,&quot;recent_lon&quot;})
+    private double recentLon; // Recent Lon    
+
+    @Schema(title = &quot;Lat&quot;, description = &quot;Latitude 값&quot;, type=&quot;Double&quot;, example = &quot;127.0277&quot;)
+    @JsonAlias({&quot;recent_lat&quot;, &quot;recentLat&quot;})
+    private double recentLat;
+
+    @Hidden
+    private int updateStatus;
+}
+</code></pre></div>
+<h3 id="schema_1">@Schema 주요 옵션</h3>
+<ul>
+<li>description : 필드 또는 클래스에 대한 설명한다.</li>
+<li>example : 예제 값을 제공하여 API 문서에서 해당 필드의 사용 예시를 보여준다.</li>
+<li>type : 테이터의 유형을 명시한다.</li>
+<li>format : 데이터의 형식을 지정한다. (ex : date, date-time, email)</li>
+<li>requiredMode : 필수 인자값 여부 지정한다.</li>
+<li>title : 필드나 모델의 제목을 정의한다.</li>
+<li>defaultValue : 기본값을 설정한다.</li>
+<li>minimum / maximum : 숫자형 데이터의 최소값 및 최대값을 설정한다.</li>
+<li>minLength / maxLength : 문자열의 최소 및 최대 길이를 설정한다.</li>
+<li>nullable : 필드가 null 값을 가질 수 있는지 여부를 지정한다.</li>
+<li>hidden : 모델에는 존재하지만 사용자로부터 입력을 받지 않는 데이터에 대해 지정한다.</li>
+</ul>
+<p><img alt="schema" src="../images/java1/5.png" /></p>
+<h2 id="_2">참고사항</h2>
+<h3 id="1">1. 라이브러리 및 유지 관리 상태</h3>
+<h4 id="springdoc-openapi">springdoc-openapi</h4>
+<ul>
+<li>
+<p>OpenAPI 3.0을 지원하기 위해 설계된 라이브러리.</p>
+</li>
+<li>
+<p>Spring Boot와의 호환성이 더 뛰어나며 유지 관리와 업데이트가 활발.</p>
+</li>
+<li>
+<p>최근에는 springfox보다 권장되는 방식으로 자리잡았다.</p>
+</li>
+</ul>
+<h4 id="springfox">springfox</h4>
+<ul>
+<li>
+<p>주로 Swagger 2.0 사양을 지원하는 라이브러리, 오랫동안 사용되어 온 표준.</p>
+</li>
+<li>
+<p>최근 업데이트가 거의 이루어지지 않으며, Spring Boot 2.4 이상부터 호환성 문제가 생기는 경우가 많다.</p>
+</li>
+</ul>
+<h3 id="2-openapi-swagger">2. OpenAPI 및 Swagger 버전</h3>
+<h4 id="springdoc-openapi_1">springdoc-openapi</h4>
+<ul>
+<li>
+<p>OpenAPI 3.0 사양을 따르므로 최신 API 문서 표준에 적합.</p>
+</li>
+<li>
+<p>springdoc-openapi-ui는 OpenAPI 문서 작성에 있어 더 유연한 구조와 다양한 어노테이션을 지원</p>
+</li>
+</ul>
+<h4 id="springfox_1">springfox</h4>
+<ul>
+<li>Swagger 2.0 사양을 지원하며, OpenAPI 3.0 기능을 완벽히 지원하지 않는다.</li>
+</ul>
+<h3 id="3">3. 의존성 및 설정 간소화</h3>
+<h4 id="springdoc-openapi_2">springdoc-openapi</h4>
+<ul>
+<li>
+<p>Spring Boot 2.x와 매우 쉽게 통합된다.</p>
+</li>
+<li>
+<p>필요한 의존성을 추가하고 실행만 하면 자동으로 API 문서화가 이루어지며, 별도의 설정이 거의 필요 없다.</p>
+</li>
+</ul>
+<h4 id="springfox_2">springfox</h4>
+<ul>
+<li>추가적인 설정이 필요한 경우가 많으며, 특히 Spring Boot 2.4 이상에서는 @EnableSwagger2 등의 어노테이션과 추가 설정을 요구하는 경우가 있다.</li>
+</ul>
+<h3 id="4-spring-boot">4. Spring Boot 버전 호환성</h3>
+<h4 id="springdoc-openapi_3">springdoc-openapi</h4>
+<ul>
+<li>
+<p>Spring Boot 2.4 이상에서도 안정적으로 작동.</p>
+</li>
+<li>
+<p>Spring Boot 3.x 버전까지도 지원이 이어지고 있다.</p>
+</li>
+</ul>
+<h4 id="springfox_3">springfox</h4>
+<ul>
+<li>
+<p>Spring Boot 2.4 이상부터 호환성 문제가 자주 발생하며, 최신 버전과의 호환성 보장이 어렵다.</p>
+</li>
+<li>
+<p>특히 Spring Boot 2.6 이상에서는 정상 동작하지 않는 이슈가 있다.</p>
+</li>
+<li>
+<p>2018년부터 2020년까지 업데이트가 없었고, 2020년 6월과 7월 사이에 마지막 업데이트를 한 이후 후속 업데이트가 없다.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
