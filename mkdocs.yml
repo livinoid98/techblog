@@ -1,0 +1,46 @@
+site_name: TechBlog
+docs_dir: 'docs'
+
+theme:
+    name: material
+    features:
+        - content.tabs.link
+        - content.code.copy
+    language: ko
+    palette:
+        - media: '(prefers-color-scheme: light)'
+          scheme: default
+          primary: custom
+          toggle:
+              icon: material/weather-night
+              name: Switch to dark mode
+        - media: '(prefers-color-scheme: dark)'
+          scheme: slate
+          primary: custom
+          toggle:
+              icon: material/brightness-4
+              name: Switch to light mode
+
+markdown_extensions:
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+    - tables
+    - pymdownx.tabbed:
+          alternate_style: true
+
+plugins:
+    - search:
+          lang: ko
+    - i18n:
+          docs_structure: folder
+          languages:
+              - locale: ko
+                name: 한국어
+                build: true
+                default: true
+    - literate-nav:
+          nav_file: nav.md
+
+nav:
+    - index.md
