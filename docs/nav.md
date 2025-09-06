@@ -1,9 +1,11 @@
 - [](index.md)
 - Frontend
-    - [Jamstack](test.md)
+    - Electron
+        - [Electron](Electron1.md)
 - Backend
     - Java/Spring
         - [Swagger 설정](Java1.md)
+        - [Java Heap 분석](Java2.md)
     - PostgreSQL
         - [SQL 최적화 쿼리 작성 방법](Postgresql1.md)
 - Infra
