@@ -1,0 +1,1612 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../Java1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Electron - TechBlog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#process" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="TechBlog" class="md-header__button md-logo" aria-label="TechBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TechBlog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Electron
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TechBlog" class="md-nav__button md-logo" aria-label="TechBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TechBlog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Frontend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Electron
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#electron-process-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Electron의 Process Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Process
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-browserwindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 창(BrowserWindow) 관리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Application 생명주기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-native-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Native APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renderer-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Renderer Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preload-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preload Scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java/Spring
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Java/Spring
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Swagger 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java Heap 분석
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PostgreSQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postgresql1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL 최적화 쿼리 작성 방법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infra
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infra
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kubernetes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RKE2 OS 설치가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RKE2 Cluster 설치가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RKE2 각 Tools 설치가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CWE
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CWE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cwe1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CWE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cwe2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SonarQube
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OWASP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OWASP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Owasp1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OWASP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Owasp2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ZAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#electron-process-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Electron의 Process Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Process
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-browserwindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 창(BrowserWindow) 관리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Application 생명주기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-native-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Native APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renderer-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Renderer Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preload-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preload Scripts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="process">Process</h1>
+<h2 id="electron-process-model">Electron의 Process Model</h2>
+<p>프레임워크를 만드는 Chromium의 다중 프로세스 아키텍처를 상속합니다. 단일 프로세스를 사용함에 따라 하나의 웹사이트가 충돌하거나 중단되면 전체 브라우저에 영향을 미칠 수 있습니다. 이 문제를 해결하기 위해 각 탭이 자체 프로레스에서 렌더링 되고 단일 브라우저 프로세스가 각 탭 프로세스는 물론 애플리케이션 수명주기 전체를 제어합니다.</p>
+<p><img alt="process model" src="../images/electron1/1.png" /></p>
+<p>Electron은 이와 매우 유사하게 구조화되어있습니다. 앱 개발자는 두 가지 유형의 Main 프로세스, Renderer 프로세스를 제어합니다.</p>
+<h2 id="main-process">Main Process</h2>
+<p>각 Electron 앱에는 애플리케이션의 진입점 역할을 하는 단일 기본 프로세스가 있습니다. 이 기본 프로세스는 Node.js 환경에서 실행됩니다.</p>
+<h4 id="1-browserwindow">1. 창(BrowserWindow) 관리</h4>
+<p>Main Process의 주요 목적은 BrowserWindow 인스턴스를 생성하여 애플리케이션 창을 만들고 관리하는 것입니다.</p>
+<p><img alt="browser window" src="../images/electron1/2.png" /></p>
+<p>BroswerWindow 클래스의 각 인스턴스는 별도의 Renderer Process에서 웹 페이지를 로드하는 애플리케이션 창을 만듭니다. 창의 webContents 개체를 사용하여 Main Process에서 이 웹 컨텐츠와 상호작용할 수 있습니다. 인스턴스가 소멸되면 해당 렌더러 프로세스도 종료됩니다.</p>
+<h4 id="2-application">2. Application 생명주기</h4>
+<p>Main Process는 Electron의 앱 모듈을 통해 애플리케이션의 라이프사이클을 제어합니다. 이 모듈은 사용자 정의 애플리케이션 동작(ex: 프로그래밍 방식으로 애플리케이션 종료, 애플리케이션 도크 수정 또는 정보 패널 표시)을 추가하는데 사용할 수 있는 다양한 이벤트 및 메서드 세트를 제공합니다.</p>
+<p><img alt="application 생명주기" src="../images/electron1/3.png" /></p>
+<h4 id="3-native-apis">3. Native APIs</h4>
+<p>Electron의 기능을 웹 콘텐츠용 Chromium Wrapper 이상으로 확장하기 위해 Main Process는 사용자 운영 체제와 상호 작용하는 맞춤형 API도 추가합니다.
+메뉴, 대화상자 및 트레이 아이콘과 같은 기본 데스크톱 기능을 제어하는 다양한 모듈을 제공합니다.</p>
+<h2 id="renderer-process">Renderer Process</h2>
+<p>각 Electron 앱은 열려있는 각 BrowserWindow 그리고 웹에 포함할 때마다 별도의 Renderer Process를 생성합니다. 이름에서 알 수 있듯이 Renderer는 웹 콘텐츠 렌더링을 담당합니다. 예를 들면, 기존에 익숙하게 개발하던 react, vue등의 코드들이 Renderer Process쪽이라고 볼 수 있습니다. Main Process와는 IPC를 통해 통신합니다.  모든 의도와 목적을 위해 Renderer Process에서 실행되는 코드는 웹 표준에 따라 작동해야 합니다.</p>
+<p>웹 사양에 대해 최소한 이해해야하는 내용은 아래와 같습니다.
+- HTML 파일은 Renderer Process의 진입점입니다.
+- UI 스타일은 CSS를 통해 추가됩니다.
+- 실행 가능한 JavaScript 코드는 <code>&lt;script&gt;</code> 요소를 통해 추가할 수 있습니다.</p>
+<p>더불어, 이는 Renderer가 다른 Node.js API에 직접 액세스할 수 없다는 의미입니다. Renderer에 NPM 모듈을 직접 포함하려면 웹에서 사용하는 것과 동일한 번들러 도구(ex: webpack, parcel)를 사용해야 합니다.</p>
+<h2 id="preload-scripts">Preload Scripts</h2>
+<p>Preload Scripts는 Electron 애플리케이션에서 웹 페이지와 Node.js 환경 간의 다리를 놓는 역할을 합니다. 브라우저에서 사용할 수 없는 Node.js API를 웹 페이지에 안전하게 노출시키는 역할을 합니다. 추가로 Preload 스크립트를 사용하면 특정 기능만 웹 페이지에 노출 시킬 수 있습니다. 프리로드 스크립트는 BrowserWindow 생성자의 webPreferences 옵션에서 기본 프로세스에 첨부할 수 있습니다.</p>
+<p><img alt="preload scripts" src="../images/electron1/4.png" /></p>
+<p>Preload Scripts는 Renderer와 전역 Window 인터페이스를 공유하고 Node.js API에 액세스할 수 있으므로 웹 콘텐츠가 사용할 수 있는 임의의 API를 전역에 노출하여 Renderer를 향상시키는 역학을 합니다.</p>
+<p>Preload Scripts는 연결된 Renderer와 전역을 공유하지만 contestIsoloation 기본값으로 인해 Preload Scripts의 변수를 창으로 직접 연결할 수는 없습니다.</p>
+<p><img alt="preload scripts" src="../images/electron1/5.png" /></p>
+<p><img alt="preload scripts" src="../images/electron1/6.png" /></p>
+<p>웹 콘텐츠의 코드에 권한 있는 API가 유츌되지 않도록 Preload Scripts를 Reneder의 기본 세계에서 격리하는 ContextIsolation 대신 ContextBridge 모듈을 사용하여 안전하게 접근할 수 있습니다.</p>
+<p><img alt="preload scripts" src="../images/electron1/7.png" /></p>
+<p><img alt="preload scripts" src="../images/electron1/8.png" /></p>
+<p>이 기능은 다음 두 가지 주요 목적에 매우 유용합니다.</p>
+<ul>
+<li>
+<p>ipcRenderer 도우미를 Renderer에 노출하면 IPC(프로세스 간 통신)를 사용하여 Renderer에서 Main Process 작업을 트리거 할 수 있으며 
+그 반대도 마찬가지입니다.</p>
+</li>
+<li>
+<p>원격 URL에서 호스팅되는 기존 웹 앱에 대한 Electron Wrapper를 개발하는 경우 웹 클라이언트 측의 데스크톱 전용 로직에 사용할 수 있는 사용자 정의 속성을 Renderer의 전역에 추가할 수 있습니다.</p>
+</li>
+</ul>
+<p><img alt="preload scripts" src="../images/electron1/9.png" /></p>
+<h1 id="ipc-inter-process-communication">IPC (Inter-Process Communication)</h1>
+<p>IPC는 Electron에서 기능이 풍부한 데스크톱 애플리케이션을 구축하는 핵심 부분입니다. Main Process와 Renderer Process는 Electron의 Process Model에서 서로 다른 역할을 가지기 때문에 IPC는 UI에서 기본 API를 호출하거나 기본 메뉴에서 웹 콘텐츠의 변경 사항을 트리거하는 등 많은 일반적인 작업을 수행하는 유일한 방법입니다.</p>
+<h2 id="ipc-channels">IPC Channels</h2>
+<p>Process는 ipcMain 및 ipcRenderer 모듈을 사용하여 개발자가 정의한 Channel을 통해 메시지를 전달하여 통신합니다. 이러한 채널은 임의적(원하는 이름으로 지정 가능) 및 양방향(두 모듈 모두에 동일한 채널 이름 사용 가능)입니다.</p>
+<ul>
+<li>ipcMain: Main Process에서 사용되며, Renderer Process로부터 메시지를 수신하고 응답을 보낼 수 있습니다.</li>
+<li>ipcRenderer: Renderer Process에서 사용되며, Main Process에 메시지를 보내고 응답을 수신할 수 있습니다.</li>
+</ul>
+<h2 id="pattern-1-renderer-to-main-one-way">Pattern 1: Renderer to Main (one-way)</h2>
+<p>Renderer Process에서 Main Process로 단방향 IPC 메시지를 실행하려면 ipcRenderer.send API를 사용하여 메시지를 보내고 ipcMain.on API에서 수신할 수 있습니다.</p>
+<p><img alt="renderer to main" src="../images/electron1/10.png" /></p>
+<p>일반적으로 이 패턴을 사용하여 웹 콘텐츠에서 Main Process API를 호출합니다.</p>
+<h4 id="1-listen-for-events-with-ipcmainon">1. Listen for events with "ipcMain.on"</h4>
+<p>Main Process에서 set-title이라는 API를 사용하여 채널에 IPC Listener를 설정합니다.</p>
+<p><img alt="ipcMain.on" src="../images/electron1/11.png" /></p>
+<p>위 콜백에는 두개의 매개변수(handleSetTitle Structure, 문자열)가 있습니다. 메시지가 채널을 통해 올 때마다 이 함수는 메시지를 보낸 곳에 연결된 BrowserWindow 인스턴스를 찾고 그곳에서 API를 사용합니다.</p>
+<h4 id="2-expose-via-preload">2. Expose via preload</h4>
+<p>위에서 생성한 Listener에게 메시지를 보내려면 API를 사용할 수 있습니다. 기본적으로 Renderer Process에는 Node.js나 Electron 모듈에 접근할 수 없습니다.
+앱 개발자로서 Preload Script를 사용하여 어떤  API를 노출할지 선택해야합니다.</p>
+<p><img alt="expose via preload" src="../images/electron1/12.png" /></p>
+<p>contextBridge 모듈을 사용하여 Renderer Process에 전역 변수를 노출시킬 수 있습니다. 이 시점에 Renderer Process에서 해당 함수를 사용할 수 있게 됩니다.</p>
+<h4 id="3-build-the-renderer-process-ui">3. Build the Renderer Process UI</h4>
+<p><img alt="build the renderer" src="../images/electron1/13.png" /></p>
+<p>BrowserWindow에 로드된 HTML 파일에 텍스트 입력돠 버튼으로 구성된 기본 UI를 추가합니다. 위 요소를 대화형으로 만들기 위해 Preload Scripts에서 노출된 기능을 활용하는 코드를 추가합니다.</p>
+<p><img alt="build the renderer" src="../images/electron1/14.png" /></p>
+<h2 id="pattern-2-renderer-to-main-two-way">Pattern 2: Renderer to Main (two-way)</h2>
+<p>두 Process 간의 양방향 IPC의 일반적인 용도는 Renderer Process 코드에서 Main Process 모듈을 호출하고 결과를 기다리는 것입니다. 이를 위해 ipcRenderer.invoke와 ipcMain.handle을 사용할 수 있습니다.</p>
+<h4 id="1-ipcmainhandle">1. ipcMain.handle로 이벤트 듣기</h4>
+<p><img alt="ipcMain.handle" src="../images/electron1/15.png" /></p>
+<h4 id="2-expose-via-prelaod">2. Expose via prelaod</h4>
+<p><img alt="expose via preload" src="../images/electron1/16.png" /></p>
+<h4 id="3-build-the-renderer-process-ui_1">3. Build the renderer process UI</h4>
+<p><img alt="build the renderer process UI" src="../images/electron1/17.png" /></p>
+<p>preload API를 트리거하는데 사용되는 버튼을 구성합니다. </p>
+<p><img alt="build thr renderer process UI" src="../images/electron1/18.png" /></p>
+<h2 id="pattern-3-main-to-renderer">Pattern 3: Main to renderer</h2>
+<p>Main Process에서 Renderer Process로 메시지를 보낼 때, 메시지를 받는 Renderer를 지정해야합니다. 메시지는 webContents 인스턴스를 통해 Renderer Process로 전송되어야합니다. webContents 인스턴트에는 ipcRenderer.send와 동일한 방식의 send 메서드가 포함되어 있습니다.</p>
+<h4 id="1-webcontents">1. webContents 모듈로 메시지 보내기</h4>
+<p><img alt="webcontents" src="../images/electron1/19.png" /></p>
+<h4 id="2-expose-via-preload_1">2. Expose via preload</h4>
+<p><img alt="expose via preload" src="../images/electron1/20.png" /></p>
+<h4 id="3-build-the-renderer-process-ui_2">3. Build the renderer process UI</h4>
+<p>counter를 통해 이벤트를 발생 시킬때마다 업데이트 되는 내용 확인하도록 합니다.</p>
+<p><img alt="build the renderer" src="../images/electron1/21.png" /></p>
+<p><img alt="build the renderer" src="../images/electron1/22.png" /></p>
+<h2 id="pattern-4-renderer-to-renderer">Pattern 4: Renderer to renderer</h2>
+<p>Renederer Process 간에 메시지를 직접 보내는 방법은 없습니다.
+Main Process를 메시지 브로커로 사용하여 메시지를 Main Process로 보내면 다른 Renderer로 전달합니다.</p>
+<h1 id="process-sandboxing">Process SandBoxing</h1>
+<p>Chromium의 주요 보안 기능 중 하나는 샌드박스 내에서 프로세스를 실행할 수 있다는 것입니다.
+샌드박스는 대부분의 시스템 리소스에 대한 접근을 제한하여 악성 코드가 유발할 수 있는 피해를 제한합니다. 샌드 박스된 프로세스는 CPU 사이클과 메모리만 자유롭게 사용할 수 있습니다.
+Chromium에서는 Main Process를 제외한 대부분의 프로세스에 샌드박싱이 적용됩니다.</p>
+<h2 id="1-electron">1. Electron의 샌드박스 동작</h2>
+<p>대부분 Chromium과 동일한 방식으로 작동하지만 Electron은 Node.js와 인터페이스하기 때문에 고려해야할 몇가지 추가 개념이 있습니다.</p>
+<h4 id="renderer-process_1">Renderer Process</h4>
+<p>Electron의 Renderer Process가 샌드박스 되면 일반 Chrome Renderer가 작동합니다. 샌드박스된 Renderer는 Node.js 환경이 초기화 되지 않습니다.
+따라서 샌드박스가 활성화 되면 Renderer Process는 파일 시스템과 상호 작용, 시스템 변경, 하위 프로세스 생성 등의 권한이 있는 작업을 수행할 때, 
+IPC를 통해 Main Process에 위임해야만 합니다.</p>
+<h4 id="preload-scripts_1">Preload scripts</h4>
+<p>Renderer Process가 Main Process와 통신할 수 있도록 하기 위해, 샌드박스된 Renderer에 연결된 preload scripts는 Node.js API의 일부를 사용할 수 있습니다.</p>
+<h2 id="sandbox">SandBox 구성</h2>
+<p>대부분의 앱에서는 샌드박싱이 최선의 선택입니다. 하지만 샌드박스와 호환되지 않는 특정 사례에서는 특정 프로세스에 대해 샌드박스를 비활성화 할 수 있습니다.</p>
+<ul>
+<li>단일 프로세스에 대한 샌드박스 비활성화</li>
+</ul>
+<p><img alt="sandbox" src="../images/electron1/23.png" /></p>
+<ul>
+<li>전역적으로 샌드박스 활성화</li>
+</ul>
+<p><img alt="sandbox" src="../images/electron1/24.png" /></p>
+<h2 id="vue-electron">Vue + Electron 연결</h2>
+<h4 id="1-vue">1. vue 프로젝트 생성</h4>
+<div class="highlight"><pre><span></span><code>D:\Electron&gt;vue create electron-vue
+</code></pre></div>
+<h4 id="2-vue-electron-builder">2. vue 프로젝트에 electron builder 설치</h4>
+<div class="highlight"><pre><span></span><code>D:\Electron\electron-vue&gt;vue add electron-builder
+</code></pre></div>
+<h4 id="3">3. 앱 실행</h4>
+<div class="highlight"><pre><span></span><code>D:\Electron\electron-vue&gt;npm run electron:serve
+</code></pre></div>
+<p><img alt="serve app" src="../images/electron1/25.png" /></p>
+<h2 id="_1">외부 프로그램 실행</h2>
+<h4 id="1">1. 파일 동작</h4>
+<p><img alt="start app" src="../images/electron1/26.gif" /></p>
+<h4 id="2">2. 파일 구성</h4>
+<p><img alt="file" src="../images/electron1/27.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="o">--</span><span class="w"> </span><span class="nx">vue</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@vue/cli-service&#39;</span><span class="p">)</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">transpileDependencies</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">pluginOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">electronBuilder</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">nodeIntegration</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">contextIsolation</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;src/preload.js&#39;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">--</span><span class="w"> </span><span class="nx">background</span><span class="p">.</span><span class="nx">js</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">app</span><span class="p">,</span><span class="w"> </span><span class="nx">protocol</span><span class="p">,</span><span class="w"> </span><span class="nx">BrowserWindow</span><span class="p">,</span><span class="w"> </span><span class="nx">ipcMain</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;electron&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createProtocol</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vue-cli-plugin-electron-builder/lib&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">installExtension</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VUEJS3_DEVTOOLS</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;electron-devtools-installer&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;path&#39;</span><span class="kd">const</span><span class="w"> </span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">spawn</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;child_process&#39;</span><span class="p">);</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createWindow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// Create the browser window.  </span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BrowserWindow</span><span class="p">({</span><span class="w">    </span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">800</span><span class="p">,</span><span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">600</span><span class="p">,</span><span class="w">    </span>
+<span class="w">    </span><span class="nx">webPreferences</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w">            </span><span class="c1">// Use pluginOptions.</span>
+<span class="w">        </span><span class="nx">nodeIntegration</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ELECTRON_NODE_INTEGRATION</span><span class="p">,</span><span class="w">      </span>
+<span class="w">        </span><span class="nx">contextIsolation</span><span class="o">:</span><span class="w"> </span><span class="o">!</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ELECTRON_NODE_INTEGRATION</span><span class="p">,</span><span class="w">      </span>
+<span class="w">        </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;preload.js&#39;</span><span class="p">)</span><span class="w">    </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">ipcMain</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;control-packetviewer&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;control-packetviewer&#39;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">spawn</span><span class="p">(</span><span class="s1">&#39;C:\\Program Files\\Accuver\\AEGIS-O\\packetviewer\\PacketViewer2.exe&#39;</span><span class="p">,</span><span class="w">             </span>
+<span class="w">            </span><span class="s1">&#39;bf34a149e64874639ae4d43817a55a4e097c31d6&#39;</span><span class="p">]);})</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">--</span><span class="w"> </span><span class="nx">preload</span><span class="p">.</span><span class="nx">js</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">contextBridge</span><span class="p">,</span><span class="w"> </span><span class="nx">ipcRenderer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;electron&quot;</span><span class="p">;</span>
+
+<span class="nx">contextBridge</span><span class="p">.</span><span class="nx">exposeInMainWorld</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">    </span><span class="nx">controlPacketviewer</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;control-packetviewer&#39;</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">--</span><span class="w"> </span><span class="nx">HelloWorld</span><span class="p">.</span><span class="nx">vue</span>
+
+<span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">clickButton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nb">window</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">controlPacketviewer</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
